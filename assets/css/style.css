@@ -1,1 +1,171 @@
 
+body {
+  font-family: 'Monoton', cursive;
+  background: url('../images/background.gif') no-repeat;
+  background-size: cover;
+  color: white;
+}
+
+header {
+  font-size: 50px;
+  text-align: center;
+  padding: 20px;
+}
+
+.characterWrapper {
+  width: 75%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+#gameMessage {
+  visibility: hidden;
+}
+
+.container .jumbotron, .container-fluid .jumbotron {
+  color: black;
+  font-size: x-large;
+}
+
+#choose-enemy-button {
+  visibility: hidden;
+}
+
+#restart-button {
+  visibility: hidden;
+}
+
+#turn-counter {
+  font-size: 150%;
+}
+
+.character {
+  width: 153px;
+  margin: 0px 40px 0px 40px;
+  cursor: pointer;
+  display: inline-block;
+  color: black;
+  background-color: yellow;
+}
+
+.character img {
+  border: 0 none;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 200px;
+}
+
+.character-name {
+  text-align: center;
+  text-transform: capitalize;
+  line-height: 30px;
+  font-family: 'Itim', cursive;
+  font-size: 20px;
+  background-color: red;
+}
+
+.character-health {
+  text-align: center;
+}
+
+.attack {
+  text-align: center;
+}
+
+.action {
+  margin: 15px 0px;
+}
+
+#attack-button,#special-attack-button{
+	visibility: hidden;
+}
+
+.btn {
+  background: turquoise;
+  color: yellow;
+  font-size:21px;
+}
+
+.enemy {
+	width: 153px;
+	margin: 5px;
+  border-style: solid;
+  border-color: black;
+  border-width: 1px;
+  cursor: pointer;
+  background-color: red;
+  float: left;
+}
+
+#attacker {
+	padding: 5px;
+}
+
+.target-enemy {
+  background-color: yellow;
+  color: black;
+}
+
+#available-to-attack-section {
+  float: right;
+}
+
+#available-to-attack-section img {
+	height: 100px;
+}
+
+#defender {
+ text-align: center;
+}
+
+#defender-name {
+  text-align: center;
+}
+
+#defender-image {
+  padding: 0px 16px;
+  margin: 3px 0px;
+}
+
+#defender-health {
+  text-align: center;
+}
+
+.text-select,.text-select, #defender,
+#selected-character,#available-to-attack-section{
+  text-align: center;
+  color: white;
+  font-size: 26px;
+}
+
+@media only screen and (max-device-width: 768px) {
+  img {
+    border: 0;
+    height: 200px;
+  }
+
+  .character img {
+    display: block;
+  height:103px;    
+  }
+
+  #gameMessage {
+  text-align: center;
+  font-size: 10px;
+  visibility: hidden;
+  }
+
+  .text-select, .text-select, #defender,
+  #selected-character, #available-to-attack-section{
+    font-size: 16px;
+  }
+
+  .btn{
+    color: yellow;
+    width: 105px;
+    font-size: 11px;
+    text-align: center;
+}
+  
+}
