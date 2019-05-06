@@ -53,19 +53,15 @@ let characters = {
 var currSelectedCharacter;
 var currDefender;
 var combatants = [];
-// var indexofSelChar;
-// var attackResult;
 var turnCounter = 1;
 var killCount = 0;
 
 
 var renderOne = function(character, renderArea, makeChar) {
-    //character: obj, renderArea: class/id, makeChar: string
-    // console.log(character.name);
+   
     var charDiv = $("<div class='character' data-name='" + character.name + "'>");
     var charName = $("<div class='character-name'>").text(character.name);
     var charImage = $("<img alt='image' class='character-image'>").attr("src", character.imageUrl);
-    // var charBg = $('#bg').css('src = assets/images/background/'+ character.name + '.jpg');
     
     var charHealth = $("<div class='character-health'>").text(character.health);
     charDiv.append(charName).append(charImage).append(charHealth);
@@ -82,12 +78,12 @@ var renderOne = function(character, renderArea, makeChar) {
 
   // Create function to render game message to DOM
   var renderMessage = function(message) {
-    var gameMesageSet = $("#gameMessage");
+    var gameMessageSet = $("#gameMessage");
     var newMessage = $("<div>").text(message);
-    gameMesageSet.append(newMessage);
+    gameMessageSet.append(newMessage);
 
     if (message == 'clearMessage') {
-      gameMesageSet.text('');
+      gameMessageSet.text('');
     }
   };
 
@@ -157,7 +153,7 @@ var renderOne = function(character, renderArea, makeChar) {
       var gameStateMessage = "You have defeated " + charObj.name + ", choose your opponent!";
       renderMessage(gameStateMessage);
       victory.play();
-      // console.log(Math.floor(Math.random() * 3) + 1,"mp3");
+     
     }
   };
   //this is to render all characters for user to choose their charaters
@@ -167,10 +163,6 @@ var renderOne = function(character, renderArea, makeChar) {
        
      $('.text-select').html("Fight!");
      $('#gameMessage').css('visibility', 'visible');
-
-      //$('#example').append("this text was appended");
-    
-    // console.log(name, "Your Fighter");
     
     if (!currSelectedCharacter) {
       currSelectedCharacter = characters[name];
@@ -181,39 +173,29 @@ var renderOne = function(character, renderArea, makeChar) {
       }
       $("#characters-section").hide();
       renderCharacters(currSelectedCharacter, '#selected-character');
+
       //this is to render all characters for user to choose fight against
       renderCharacters(combatants, '#available-to-attack-section');
     }
   });
 
-/// testing the special attack button below here
-
-
+//special attack button
 $("#special-attack-button").on("click", function() {
   if ($('#defender').children().length !== 0) {
-    // this audio works everytime special attack
-    // specialRyu.play();currSelectedCharacter
-    // combo.play(); /// putin this is it by ken masters
+//playing sounds for 
     setTimeout(function() {
       combo.play();
       }, 100);
     setTimeout(function() {
       currSelectedCharacter.mp3.play();
       }, 400);
-    
-    
-   
    
     //defender state change
     var attackMessage = "You attacked " + currDefender.name + " for " + currSelectedCharacter.specialAttack + " damage.";
     renderMessage("clearMessage");
-    // console.log(attackMessage = "You attacked " + currDefender.name + " for " + (currSelectedCharacter.specialAttack) + " damage.");
-    //combat
 
     currDefender.health = currDefender.health - currSelectedCharacter.specialAttack;
-    // currDefender.health = currDefender.health - (currSelectedCharacter.specialAttack * turnCounter);
-    $('#special-attack-button').css('visibility', 'hidden');// hide the special attack if used
-   
+    $('#special-attack-button').css('visibility', 'hidden');
     
     //win condition
     if (currDefender.health > 0) {
@@ -229,12 +211,9 @@ $("#special-attack-button").on("click", function() {
 
       // when health reaches 100 left special attack buttons shows
       if (currSelectedCharacter.health <= 100) {
-        // console.log($('#special-attack-button').css('visibility', 'visible'));
-        // console.log("Health level at 10 or lesser, This is it! Special Attack");
-        // console.log(currSelectedCharacter.attack + " this is your charater attack");
         $('#special-attack-button').css('visibility', 'visible'); 
-
       }
+
       // game over when health reaches 0
       if (currSelectedCharacter.health <= 0) {
         renderMessage("clearMessage");
@@ -268,24 +247,21 @@ $("#special-attack-button").on("click", function() {
 
 });
 
-
-  ///this is the attack button function
-  // ----------------------------------------------------------------
-  // Create functions to enable actions between objects.
+  ///this is the attack button
   $("#attack-button").on("click", function() {
     //if defender area has enemy
     if ($('#defender').children().length !== 0) {
       //defender state change
       var attackMessage = "You attacked " + currDefender.name + " for " + (currSelectedCharacter.attack * turnCounter) + " damage.";
       renderMessage("clearMessage");
-      //combat
+    
       currDefender.health = currDefender.health - (currSelectedCharacter.attack * turnCounter);
 
       //win condition
       if (currDefender.health > 0) {
-        //enemy not dead keep playing
+        //enemy not defeated keep playing
         renderCharacters(currDefender, 'playerDamage');
-        //player state change
+       
         var counterAttackMessage = currDefender.name + " attacked you back for " + currDefender.enemyAttackBack + " damage.";
         renderMessage(attackMessage);
         renderMessage(counterAttackMessage);
@@ -295,11 +271,8 @@ $("#special-attack-button").on("click", function() {
 
        // when health reaches 100 left special attack buttons shows
         if (currSelectedCharacter.health <= 100) {
-          // console.log($('#special-attack-button').css('visibility', 'visible'));
-          // console.log("Health level at 10 or lesser, This is it! Special Attack");
           $('#special-attack-button').css('visibility', 'visible'); 
         }
-
 
         // game over when health reaches 0
         if (currSelectedCharacter.health <= 0) {
@@ -319,8 +292,6 @@ $("#special-attack-button").on("click", function() {
           $("#attack-button").unbind("click");
           $("#special-attack-button").unbind("click");
          
-
-         // The following line 5 sec final
           setTimeout(function() {
           final.play();
           }, 5000);
@@ -335,9 +306,9 @@ $("#special-attack-button").on("click", function() {
     }
   });
 
-//Restarts the game - renders a reset button
+//Restarts the game - shows a reset button
   var restartGame = function(inputEndGame) {
-    //When 'Restart' button is clicked, reload the page.
+    //When 'Restart' button is clicked, reloads the page.
     var restart = $('<button class="btn">Restart</button>').click(function() {
       location.reload();
     });
