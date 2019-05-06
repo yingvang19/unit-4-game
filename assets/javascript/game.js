@@ -23,16 +23,16 @@ let characters = {
     }, 
     'Ken': {
         name: 'Ken',
-        health: 110,
+        health: 100,
         attack: 14,
         specialAttack: 45,
         imageUrl: "assets/images/ken-stand.gif",
-        enemyAttackBack: 10,
+        enemyAttackBack: 5,
         mp3: new Audio('assets/audio/shinuken.mp3')
     }, 
     'Guile': {
         name: 'Guile',
-        health: 140,
+        health: 150,
         attack: 8,
         specialAttack: 24,
         imageUrl: "assets/images/guile-stand.gif",
@@ -41,7 +41,7 @@ let characters = {
     }, 
     'Sagat': {
         name: 'Sagat',
-        health: 170,
+        health: 180,
         attack: 5,
         specialAttack: 20,
         imageUrl: "assets/images/sagat-stand.gif",
