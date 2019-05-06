@@ -62,7 +62,6 @@ var renderOne = function(character, renderArea, makeChar) {
     var charDiv = $("<div class='character' data-name='" + character.name + "'>");
     var charName = $("<div class='character-name'>").text(character.name);
     var charImage = $("<img alt='image' class='character-image'>").attr("src", character.imageUrl);
-    
     var charHealth = $("<div class='character-health'>").text(character.health);
     charDiv.append(charName).append(charImage).append(charHealth);
     $(renderArea).append(charDiv);
@@ -159,8 +158,7 @@ var renderOne = function(character, renderArea, makeChar) {
   //this is to render all characters for user to choose their charaters
   renderCharacters(characters, '#characters-section');
   $(document).on('click', '.character', function() {
-    name = $(this).data('name');
-       
+     name = $(this).data('name');
      $('.text-select').html("Fight!");
      $('#gameMessage').css('visibility', 'visible');
     
